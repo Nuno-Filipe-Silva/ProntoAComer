@@ -2,21 +2,21 @@ package com.example.pronto_a_comer;
 
 public class Order {
 
-private int mOrderNumber;
+    private int mOrderNumber;
 
-private String mOrderDate;
+    private String mOrderDate;
 
-private Double mOrderTotalAmount;
+    private Double mOrderTotalAmount;
 
-public Order(int orderNumber, String orderDate, Double orderTotalAmount){
+    public Order(int orderNumber, String orderDate, Double orderTotalAmount) {
 
-    this.mOrderNumber = orderNumber;
+        this.mOrderNumber = orderNumber;
 
-    this.mOrderDate = orderDate;
+        this.mOrderDate = orderDate;
 
-    this.mOrderTotalAmount = orderTotalAmount;
+        this.mOrderTotalAmount = orderTotalAmount;
 
-}
+    }
 
 
     public int getOrderNumber() {
@@ -42,4 +42,5 @@ public Order(int orderNumber, String orderDate, Double orderTotalAmount){
     public void setOrderTotalAmount(Double orderTotalAmount) {
         this.mOrderTotalAmount = orderTotalAmount;
     }
+
 }
