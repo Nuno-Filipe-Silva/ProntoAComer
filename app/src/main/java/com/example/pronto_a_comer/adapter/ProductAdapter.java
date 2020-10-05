@@ -12,52 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pronto_a_comer.R;
 import com.example.pronto_a_comer.model.Product;
+import com.example.pronto_a_comer.roomdatabase.Cart;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
-
-    private List<Product> productList;
-
-    private final LayoutInflater layoutInflater;
-
-    public ProductAdapter(Context context, List<Product> productList) {
-
-        layoutInflater = LayoutInflater.from(context);
-
-        this.productList = productList;
-
-    }
-
-
-
-    @NonNull
-    @Override
-    public ProductAdapter.ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        View view = layoutInflater.inflate(R.layout.product_item, parent, false);
-
-        return new ProductViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ProductAdapter.ProductViewHolder holder, int position) {
-
-        Product product = productList.get(position);
-
-        holder.tvProductName.setText(product.getProductName());
-
-        holder.tvProductPrice.setText(String.valueOf(product.getProductPrice()));
-
-        holder.ivProductImage.setImageResource(R.drawable.logo);
-
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return productList.size();
-    }
 
     class ProductViewHolder extends RecyclerView.ViewHolder {
 
@@ -78,4 +38,54 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         }
     }
+
+    private final LayoutInflater layoutInflater;
+
+    private List<Cart> mProductList;
+
+
+    public ProductAdapter(Context context) {
+
+        layoutInflater = LayoutInflater.from(context);
+
+        this.mProductList = new ArrayList<>();
+
+    }
+
+
+    @NonNull
+    @Override
+    public ProductAdapter.ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        View view = layoutInflater.inflate(R.layout.product_item, parent, false);
+
+        return new ProductViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ProductAdapter.ProductViewHolder holder, int position) {
+
+        Cart product = mProductList.get(position);
+
+        holder.tvProductName.setText(product.getName());
+
+        holder.tvProductPrice.setText(String.valueOf(product.getPrice()));
+
+        holder.ivProductImage.setImageResource(R.drawable.logo);
+
+    }
+
+    public void setProductList(List<Cart> productList) {
+
+        mProductList = productList;
+
+        notifyDataSetChanged();
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return mProductList.size();
+    }
+
 }

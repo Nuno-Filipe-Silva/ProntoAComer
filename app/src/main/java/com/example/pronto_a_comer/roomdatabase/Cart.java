@@ -13,11 +13,19 @@ public class Cart {
     @ColumnInfo(name = "name")
     public String name;
 
-    @ColumnInfo(name = "imageId")
-    public String imageId;
-
     @ColumnInfo(name = "price")
-    public String price;
+    public double price;
+
+    @ColumnInfo(name = "imageId")
+    public int imageId;
+
+
+    public Cart(int id, String name, double price, int imageId) {
+        this.id = id;
+        this.name = name;
+        this.imageId = imageId;
+        this.price = price;
+    }
 
     public int getId() {
         return id;
@@ -35,19 +43,19 @@ public class Cart {
         this.name = name;
     }
 
-    public String getImageId() {
+    public int getImageId() {
         return imageId;
     }
 
-    public void setImageId(String imageId) {
+    public void setImageId(int imageId) {
         this.imageId = imageId;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 }
